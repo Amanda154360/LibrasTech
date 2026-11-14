@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LibrasTech</title>
+
+  <link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32x32.png">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<div class="auth-page">
+
+  <div class="auth-topbar">
+    <a href="../src/index.html" class="auth-logo">
+      <img src="../img/logoInteira.png" alt="LibrasTech">
+    </a>
+  </div>
+
+  <main class="auth-card">
+    <h1>Bem-vindo de volta!</h1>
+
+    <p class="auth-intro">
+      Realize o login para retornar à sua conta e iniciar novamente o seu processo de aprendizagem!
+    </p>
+
+    <form id="login" class="auth-form">
+      <label for="email">Seu email:</label>
+      <input id="email" name="email" type="email"
+        minlength="6" maxlength="70"
+        autocomplete="email" required>
+
+      <label for="senha">Sua senha:</label>
+      <input id="senha" name="senha" type="password"
+        maxlength="30"
+        autocomplete="current-password" required>
+
+      <button class="button button-primary" type="submit">Enviar</button>
+    </form>
+
+    <a class="text-link back-link" href="../src/index.html">Voltar</a>
+  </main>
+
+</div>
+
+<script src="../js/main.js"></script>
+</body>
+</html>

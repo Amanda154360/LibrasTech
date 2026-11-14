@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LibrasTech</title>
+
+  <link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32x32.png">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<section class="landing" id="Landingpage">
+  <div class="landing-copy">
+    <a class="landing-wordmark" href="#Landingpage">LibrasTech</a>
+
+    <div class="landing-message">
+      <p class="eyebrow">Aprenda no seu ritmo</p>
+      <h1>Com tecnologia,<br>você aprende mais.</h1>
+      <p>Clique aqui para conhecer nosso curso de LIBRAS:</p>
+      <a href="#home" class="button button-outline">Saiba mais</a>
+    </div>
+  </div>
+
+  <div class="landing-art" aria-hidden="true">
+    <div class="hands-background"></div>
+    <img src="../img/maoAzul.png" class="hand hand-blue" alt="">
+    <img src="../img/maoAmarela.png" class="hand hand-yellow" alt="">
+  </div>
+</section>
+
+<section id="home" class="home-section">
+
+  <header class="site-header">
+    <a class="site-brand" href="../src/index.html" aria-label="LibrasTech - página inicial">
+      <img src="../img/logoInteira.png" class="navbar-logo" alt="LibrasTech">
+    </a>
+
+    <button class="menu-toggle" type="button"
+      aria-label="Abrir menu" aria-expanded="false"
+      onclick="document.querySelector('.site-nav').classList.toggle('is-open'); this.setAttribute('aria-expanded', this.getAttribute('aria-expanded') !== 'true')">
+      <i class="bi bi-list"></i>
+    </button>
+
+    <nav class="site-nav">
+      <a href="../src/sobre.html">Sobre</a>
+      <a href="../src/queroAprender.html">Quero aprender</a>
+      <a class="profile-link" href="../src/login.html" aria-label="Entrar">
+        <i class="bi bi-person-circle"></i>
+      </a>
+    </nav>
+  </header>
+
+  <div class="home-content">
+    <div>
+      <p class="eyebrow">Conheça o curso</p>
+      <h2>LibrasTech</h2>
+      <p>Aprenda LIBRAS utilizando tecnologia e recursos interativos para tornar seu aprendizado mais simples.</p>
+      <a href="../src/queroAprender.html" class="button button-primary">Quero aprender</a>
+    </div>
+
+  </div>
+</section>
+
+<section class="features-section" id="pq">
+  <div class="section-heading">
+    <p class="eyebrow">Por que escolher o LibrasTech?</p>
+    <h2>Nosso objetivo é juntar tecnologia com educação!</h2>
+  </div>
+
+  <div class="feature-grid">
+    <article class="feature-card">
+      <span class="feature-icon"><i class="bi bi-camera-video"></i></span>
+      <h3>Correção em tempo real</h3>
+      <p>Nosso curso possui sistema de correção na mesma hora em que você executa o movimento.</p>
+    </article>
+
+    <article class="feature-card">
+      <span class="feature-icon"><i class="bi bi-lightbulb"></i></span>
+      <h3>Tecnologia e aprendizado</h3>
+      <p>Unimos tecnologias para facilitar seu aprendizado e tornar a experiência mais prática.</p>
+    </article>
+
+    <article class="feature-card">
+      <span class="feature-icon"><i class="bi bi-collection"></i></span>
+      <h3>Sua biblioteca</h3>
+      <p>Acesse o que você já aprendeu e acompanhe os conteúdos que ainda faltam estudar.</p>
+    </article>
+  </div>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../js/main.js"></script>
+
+</body>
+</html>

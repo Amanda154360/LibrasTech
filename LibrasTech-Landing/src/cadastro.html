@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LibrasTech - Cadastro</title>
+
+  <link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32x32.png">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<div class="auth-page">
+
+  <div class="auth-topbar">
+    <a href="../src/index.html" class="auth-logo">
+      <img src="../img/logoInteira.png" alt="LibrasTech">
+    </a>
+  </div>
+
+  <main class="auth-card auth-card-wide">
+
+    <div id="parte1">
+      <h1>Crie sua conta</h1>
+
+      <p class="auth-intro">
+        Tenha acesso ao nosso curso de LIBRAS, com correção ao vivo, biblioteca e muitas outras funcionalidades!
+      </p>
+
+      <form id="cadastro1" class="auth-form">
+
+        <label for="cad-email">Seu email:</label>
+        <input id="cad-email" name="email" type="email"
+          minlength="6" maxlength="70"
+          autocomplete="email" required>
+
+        <label for="cad-senha">Criar uma senha:</label>
+        <input id="cad-senha" name="senha" type="password"
+          maxlength="30" autocomplete="new-password" required>
+
+        <label for="confirmar-senha">Confirmar senha:</label>
+        <input id="confirmar-senha" name="confirmarSenha"
+          type="password" maxlength="30"
+          autocomplete="new-password" required>
+
+        <button id="btnCad1" class="button button-primary" type="submit">
+          Seguinte
+        </button>
+
+      </form>
+
+      <p class="auth-footer">
+        Já possui conta? Clique abaixo para realizar o login.
+      </p>
+
+      <a class="text-link" href="../src/login.html">Faça login</a>
+    </div>
+
+    <div id="parte2">
+      <img class="register-logo" src="../img/logoColorida.png" alt="Logo LibrasTech">
+
+      <h1>Como devemos te chamar?</h1>
+
+      <p class="auth-intro">
+        Digite seu primeiro e último nome para completar o seu cadastro:
+      </p>
+
+      <form id="cadastro2" class="auth-form">
+
+        <label for="primeiro-nome">Primeiro nome:</label>
+        <input id="primeiro-nome" name="primeiroNome"
+          type="text" minlength="3" maxlength="40"
+          autocomplete="given-name" required>
+
+        <label for="sobrenome">Sobrenome:</label>
+        <input id="sobrenome" name="sobrenome"
+          type="text" minlength="3" maxlength="40"
+          autocomplete="family-name" required>
+
+        <button id="btnCad2" class="button button-primary" type="submit">
+          Cadastrar
+        </button>
+
+      </form>
+    </div>
+
+  </main>
+</div>
+
+<script src="../js/main.js"></script>
+</body>
+</html>
