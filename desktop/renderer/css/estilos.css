@@ -1,0 +1,281 @@
+/* ===================================================
+   LIBRASTECH DESKTOP — IDENTIDADE VISUAL
+   Cores:
+   - Azul-escuro: #0B1F3A
+   - Azul principal: #1565C0
+   - Azul vibrante: #2196F3
+   - Azul-claro: #E3F2FD
+   - Fundo: #F4F8FC
+   - Branco: #FFFFFF
+   - Texto: #172B4D
+=================================================== */
+
+:root {
+  --cor-azul-escuro: #0B1F3A;
+  --cor-azul-principal: #1565C0;
+  --cor-azul-vibrante: #2196F3;
+  --cor-azul-claro: #E3F2FD;
+  --cor-fundo: #F4F8FC;
+  --cor-branco: #FFFFFF;
+  --cor-texto: #172B4D;
+  --cor-borda: #E2E8F0;
+  --sombra-suave: 0 4px 12px rgba(11, 31, 58, 0.08);
+  --sombra-card: 0 6px 18px rgba(11, 31, 58, 0.06);
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background-color: var(--cor-fundo);
+  color: var(--cor-texto);
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+/* Layout Geral com Sidebar Fixa */
+.app-wrapper {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 260px;
+  background-color: var(--cor-azul-escuro);
+  color: var(--cor-branco);
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+  box-shadow: 4px 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar-brand {
+  padding: 1.8rem 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.sidebar-brand h4 {
+  margin: 0;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: var(--cor-branco);
+  font-size: 1.35rem;
+}
+
+.sidebar-menu {
+  padding: 1.5rem 1rem;
+  flex: 1;
+}
+
+.menu-title {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 0.8rem;
+  padding-left: 0.8rem;
+}
+
+.nav-item-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0.75rem 1rem;
+  color: rgba(255, 255, 255, 0.8);
+  background: transparent;
+  border: none;
+  border-radius: 8px;
+  font-weight: 500;
+  text-align: left;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  margin-bottom: 6px;
+}
+
+.nav-item-btn:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: var(--cor-branco);
+  transform: translateX(3px);
+}
+
+.nav-item-btn.active {
+  background-color: var(--cor-azul-principal);
+  color: var(--cor-branco);
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(33, 150, 243, 0.3);
+}
+
+.sidebar-footer {
+  padding: 1.2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  background-color: rgba(0, 0, 0, 0.15);
+}
+
+.user-info-badge {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 1rem;
+}
+
+.user-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: var(--cor-azul-vibrante);
+  color: var(--cor-branco);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+}
+
+.btn-logout {
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #FF8A80;
+  background: transparent;
+  border-radius: 6px;
+  padding: 0.5rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.btn-logout:hover {
+  background-color: #D32F2F;
+  color: #FFFFFF;
+  border-color: #D32F2F;
+}
+
+/* Área Principal de Conteúdo */
+.main-content {
+  margin-left: 260px;
+  flex: 1;
+  padding: 2.5rem;
+  min-height: 100vh;
+}
+
+/* Cards Estilizados */
+.card-lt {
+  background-color: var(--cor-branco);
+  border-radius: 12px;
+  border: 1px solid var(--cor-borda);
+  box-shadow: var(--sombra-card);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card-lt:hover {
+  box-shadow: 0 8px 24px rgba(11, 31, 58, 0.1);
+}
+
+.card-title-lt {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--cor-azul-escuro);
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Botões do Sistema */
+.btn-lt-primary {
+  background-color: var(--cor-azul-principal);
+  color: var(--cor-branco);
+  border: none;
+  border-radius: 8px;
+  padding: 0.6rem 1.4rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.btn-lt-primary:hover {
+  background-color: #0D47A1;
+  color: var(--cor-branco);
+  box-shadow: 0 4px 12px rgba(21, 101, 192, 0.3);
+}
+
+.btn-lt-secondary {
+  background-color: var(--cor-azul-claro);
+  color: var(--cor-azul-principal);
+  border: 1px solid var(--cor-azul-claro);
+  border-radius: 8px;
+  padding: 0.6rem 1.4rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.btn-lt-secondary:hover {
+  background-color: #BBDEFB;
+  color: var(--cor-azul-escuro);
+}
+
+/* Tela de Login Especial */
+.login-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--cor-azul-escuro) 0%, #102A4C 100%);
+  padding: 1.5rem;
+}
+
+.login-card {
+  background-color: var(--cor-branco);
+  border-radius: 16px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
+  width: 100%;
+  max-width: 440px;
+  padding: 2.5rem;
+}
+
+.login-brand-icon {
+  width: 60px;
+  height: 60px;
+  background-color: var(--cor-azul-claro);
+  color: var(--cor-azul-principal);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  margin: 0 auto 1.2rem auto;
+}
+
+/* Tabelas e Modais */
+.table-custom {
+  vertical-align: middle;
+}
+
+.table-custom thead th {
+  background-color: #F8FAFC;
+  color: var(--cor-texto);
+  font-weight: 600;
+  border-bottom: 2px solid var(--cor-borda);
+}
+
+.badge-plano-ativo {
+  background-color: #E8F5E9;
+  color: #2E7D32;
+  font-weight: 600;
+  padding: 0.4em 0.8em;
+  border-radius: 6px;
+}
+
+.badge-plano-inativo {
+  background-color: #FFEBEE;
+  color: #C62828;
+  font-weight: 600;
+  padding: 0.4em 0.8em;
+  border-radius: 6px;
+}

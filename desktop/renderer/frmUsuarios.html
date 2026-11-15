@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; font-src 'self' https://cdnjs.cloudflare.com;">
+  <title>LibrasTech — Gerenciamento de Usuários</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+  <div class="app-wrapper">
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <i class="fa-solid fa-hands-asl-interpreting fs-4 text-info"></i>
+        <h4>LibrasTech</h4>
+      </div>
+      <div class="sidebar-menu">
+        <div class="menu-title">CONFIGURAÇÕES</div>
+        <button id="btnNavDashboard" class="nav-item-btn">
+          <i class="fa-solid fa-chart-pie"></i> Dashboard
+        </button>
+        <button id="btnNavMinhaConta" class="nav-item-btn">
+          <i class="fa-regular fa-user"></i> Minha Conta
+        </button>
+        <button id="btnNavUsuarios" class="nav-item-btn active">
+          <i class="fa-solid fa-users"></i> Usuários
+        </button>
+      </div>
+      <div class="sidebar-footer">
+        <div class="user-info-badge">
+          <div class="user-avatar" id="avatarLetra">A</div>
+          <div class="overflow-hidden">
+            <div class="fw-bold text-truncate text-white small" id="nomeAdmin">Admin</div>
+            <div class="text-muted text-truncate extra-small" style="font-size: 0.75rem;" id="emailAdmin">admin@librastech.com</div>
+          </div>
+        </div>
+        <button id="btnSair" class="btn-logout">
+          <i class="fa-solid fa-right-from-bracket me-1"></i> Sair
+        </button>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+          <h2 class="fw-bold text-dark">USUÁRIOS</h2>
+          <p class="text-muted m-0">Gerencie a base de usuários cadastrados, adicione novos registros e edite assinaturas.</p>
+        </div>
+        <div class="d-flex gap-2">
+          <button type="button" id="btnAtualizarTabela" class="btn btn-lt-secondary">
+            <i class="fa-solid fa-rotate me-1"></i> Atualizar
+          </button>
+          <button type="button" id="btnAbrirModalNovo" class="btn btn-lt-primary">
+            <i class="fa-solid fa-user-plus me-1"></i> Novo Usuário
+          </button>
+        </div>
+      </div>
+
+      <div id="alertaFeedback" class="alert d-none" role="alert"></div>
+
+      <div class="card-lt mb-4">
+        <div class="row g-2">
+          <div class="col-md-6">
+            <div class="input-group">
+              <span class="input-group-text bg-white"><i class="fa-solid fa-magnifying-glass text-muted"></i></span>
+              <input type="text" id="inputPesquisa" class="form-control" placeholder="Pesquisar por nome ou e-mail...">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-lt p-0 overflow-hidden">
+        <div class="table-responsive">
+          <table class="table table-hover table-custom mb-0">
+            <thead>
+              <tr>
+                <th class="ps-4">Primeiro Nome</th>
+                <th>Segundo Nome</th>
+                <th>CPF</th>
+                <th>E-mail</th>
+                <th>Senha Cadastrada</th>
+                <th>Possui plano?</th>
+                <th>Qual plano?</th>
+                <th class="text-center">Ações</th>
+              </tr>
+            </thead>
+            <tbody id="tbodyUsuarios">
+              <!-- Renderizado via JS -->
+            </tbody>
+          </table>
+        </div>
+
+        <div id="estadoVazio" class="text-center py-5 d-none">
+          <i class="fa-solid fa-user-slash fs-1 text-muted mb-2"></i>
+          <p class="text-muted fw-semibold">Nenhum usuário foi encontrado.</p>
+        </div>
+
+        <div id="estadoCarregando" class="text-center py-5 d-none">
+          <div class="spinner-border text-primary" role="status"></div>
+          <p class="text-muted mt-2 small">Carregando usuários do sistema...</p>
+        </div>
+
+        <div class="p-3 border-top d-flex justify-content-between align-items-center bg-light">
+          <small class="text-muted" id="infoPaginacao">Exibindo 0 registros</small>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- MODAL DE CADASTRO DE NOVO USUÁRIO -->
+  <div class="modal fade" id="modalNovoUsuario" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title fw-bold"><i class="fa-solid fa-user-plus me-2 text-primary"></i>Cadastrar Novo Usuário</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <form id="formNovoUsuario">
+          <div class="modal-body">
+            <div id="alertaModalNovo" class="alert alert-danger d-none py-2 small"></div>
+
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label class="form-label fw-semibold">Primeiro Nome</label>
+                <input type="text" id="novoPrimeiroNome" class="form-control" placeholder="Ex: João" required>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label fw-semibold">Segundo Nome</label>
+                <input type="text" id="novoSegundoNome" class="form-control" placeholder="Ex: Oliveira" required>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label fw-semibold">CPF</label>
+                <input type="text" id="novoCpf" class="form-control" placeholder="000.000.000-00" required>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label fw-semibold">E-mail</label>
+                <input type="email" id="novoEmail" class="form-control" placeholder="usuario@email.com" required>
+              </div>
+              <div class="col-md-12">
+                <label class="form-label fw-semibold">Senha Inicial</label>
+                <input type="password" id="novoSenha" class="form-control" minlength="6" placeholder="Mínimo de 6 caracteres" required>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label fw-semibold">Possui Plano?</label>
+                <select id="novoPossuiPlano" class="form-select">
+                  <option value="0" selected>Não</option>
+                  <option value="1">Sim</option>
+                </select>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label fw-semibold">Qual Plano?</label>
+                <select id="novoNomePlano" class="form-select" disabled>
+                  <option value="Nenhum plano" selected>Nenhum plano</option>
+                  <option value="Plano Mensal Básico">Plano Mensal Básico</option>
+                  <option value="Plano Anual Premium">Plano Anual Premium</option>
+                  <option value="Plano Dev Pro">Plano Dev Pro</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+            <button type="submit" class="btn btn-lt-primary">
+              <i class="fa-solid fa-plus me-1"></i> Cadastrar Usuário
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL DE EDIÇÃO DE USUÁRIO -->
+  <div class="modal fade" id="modalEditarUsuario" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title fw-bold"><i class="fa-regular fa-pen-to-square me-2 text-primary"></i>Editar Usuário</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <form id="formEditarUsuario">
+          <div class="modal-body">
+            <div id="alertaModalEditar" class="alert alert-danger d-none py-2 small"></div>
+            
+            <input type="hidden" id="editUserId">
+
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label class="form-label fw-semibold">Primeiro Nome</label>
+                <input type="text" id="editPrimeiroNome" class="form-control" required>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label fw-semibold">Segundo Nome</label>
+                <input type="text" id="editSegundoNome" class="form-control" required>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label fw-semibold">CPF</label>
+                <input type="text" id="editCpf" class="form-control" required>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label fw-semibold">E-mail</label>
+                <input type="email" id="editEmail" class="form-control" required>
+              </div>
+              <div class="col-md-12">
+                <label class="form-label fw-semibold">Redefinir Senha (Opcional)</label>
+                <input type="password" id="editNovaSenha" class="form-control" placeholder="Deixe em branco para manter a senha atual">
+                <small class="text-muted">Preencha apenas se desejar redefinir a senha do usuário.</small>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label fw-semibold">Possui Plano?</label>
+                <select id="editPossuiPlano" class="form-select">
+                  <option value="1">Sim</option>
+                  <option value="0">Não</option>
+                </select>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label fw-semibold">Qual Plano?</label>
+                <select id="editNomePlano" class="form-select">
+                  <option value="Nenhum plano">Nenhum plano</option>
+                  <option value="Plano Mensal Básico">Plano Mensal Básico</option>
+                  <option value="Plano Anual Premium">Plano Anual Premium</option>
+                  <option value="Plano Dev Pro">Plano Dev Pro</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+            <button type="submit" class="btn btn-lt-primary">
+              <i class="fa-solid fa-check me-1"></i> Salvar Alterações
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="frmUsuarios.js"></script>
+</body>
+</html>

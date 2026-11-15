@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; font-src 'self' https://cdnjs.cloudflare.com;">
+  <title>LibrasTech — Meus Dados</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+  <div class="app-wrapper">
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <i class="fa-solid fa-hands-asl-interpreting fs-4 text-info"></i>
+        <h4>LibrasTech</h4>
+      </div>
+      <div class="sidebar-menu">
+        <div class="menu-title">CONFIGURAÇÕES</div>
+        <button id="btnNavDashboard" class="nav-item-btn">
+          <i class="fa-solid fa-chart-pie"></i> Dashboard
+        </button>
+        <button id="btnNavMinhaConta" class="nav-item-btn active">
+          <i class="fa-regular fa-user"></i> Minha Conta
+        </button>
+        <button id="btnNavUsuarios" class="nav-item-btn">
+          <i class="fa-solid fa-users"></i> Usuários
+        </button>
+      </div>
+      <div class="sidebar-footer">
+        <div class="user-info-badge">
+          <div class="user-avatar" id="avatarLetra">A</div>
+          <div class="overflow-hidden">
+            <div class="fw-bold text-truncate text-white small" id="nomeAdmin">Admin</div>
+            <div class="text-muted text-truncate extra-small" style="font-size: 0.75rem;" id="emailAdmin">admin@librastech.com</div>
+          </div>
+        </div>
+        <button id="btnSair" class="btn-logout">
+          <i class="fa-solid fa-right-from-bracket me-1"></i> Sair
+        </button>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <div class="mb-4">
+        <h2 class="fw-bold text-dark">MEUS DADOS</h2>
+        <p class="text-muted">Gerencie suas informações cadastrais de desenvolvedor/administrador.</p>
+      </div>
+
+      <div id="alertaFeedback" class="alert d-none" role="alert"></div>
+
+      <div class="card-lt">
+        <form id="formMeusDados">
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label class="form-label fw-semibold">Primeiro Nome</label>
+              <input type="text" id="inputPrimeiroNome" class="form-control" disabled required>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label fw-semibold">Segundo Nome</label>
+              <input type="text" id="inputSegundoNome" class="form-control" disabled required>
+            </div>
+            <div class="col-md-12">
+              <label class="form-label fw-semibold">E-mail</label>
+              <input type="email" id="inputEmail" class="form-control" disabled required>
+            </div>
+            <div class="col-md-12">
+              <label class="form-label fw-semibold">Senha Cadastrada</label>
+              <div class="input-group">
+                <input type="password" value="••••••••••••" class="form-control" disabled>
+                <button type="button" class="btn btn-outline-primary" id="btnAbrirModalSenha">
+                  <i class="fa-solid fa-key me-1"></i> Alterar Senha
+                </button>
+              </div>
+              <small class="text-muted">Sua senha é protegida por criptografia de ponta a ponta e nunca é exibida em texto puro.</small>
+            </div>
+          </div>
+
+          <div class="mt-4 pt-3 border-top d-flex gap-2 justify-content-end">
+            <button type="button" id="btnEditar" class="btn btn-lt-secondary">
+              <i class="fa-regular fa-pen-to-square me-1"></i> Editar dados
+            </button>
+            <button type="button" id="btnCancelar" class="btn btn-light d-none">Cancelar</button>
+            <button type="submit" id="btnSalvar" class="btn btn-lt-primary d-none">
+              <i class="fa-solid fa-check me-1"></i> Salvar alterações
+            </button>
+          </div>
+        </form>
+      </div>
+    </main>
+  </div>
+
+  <!-- Modal de Alteração de Senha Segura -->
+  <div class="modal fade" id="modalSenha" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title fw-bold">Alterar Senha</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <form id="formAlterarSenha">
+          <div class="modal-body">
+            <div id="alertaSenha" class="alert alert-danger d-none py-2 small"></div>
+            <div class="mb-3">
+              <label class="form-label fw-semibold">Senha Atual</label>
+              <input type="password" id="inputSenhaAtual" class="form-control" required>
+            </div>
+            <div class="mb-3">
+              <label class="form-label fw-semibold">Nova Senha</label>
+              <input type="password" id="inputNovaSenha" class="form-control" minlength="6" required>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+            <button type="submit" class="btn btn-lt-primary">Confirmar Alteração</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="frmMeusDados.js"></script>
+</body>
+</html>
