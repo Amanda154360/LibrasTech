@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; font-src 'self' https://cdnjs.cloudflare.com;">
+  <title>LibrasTech — Dashboard</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+  <div class="app-wrapper">
+    <!-- Sidebar Lateral Fixa -->
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <i class="fa-solid fa-hands-asl-interpreting fs-4 text-info"></i>
+        <h4>LibrasTech</h4>
+      </div>
+
+      <div class="sidebar-menu">
+        <div class="menu-title">CONFIGURAÇÕES</div>
+        <button id="btnNavDashboard" class="nav-item-btn active">
+          <i class="fa-solid fa-chart-pie"></i> Dashboard
+        </button>
+        <button id="btnNavMinhaConta" class="nav-item-btn">
+          <i class="fa-regular fa-user"></i> Minha Conta
+        </button>
+        <button id="btnNavUsuarios" class="nav-item-btn">
+          <i class="fa-solid fa-users"></i> Usuários
+        </button>
+      </div>
+
+      <div class="sidebar-footer">
+        <div class="user-info-badge">
+          <div class="user-avatar" id="avatarLetra">A</div>
+          <div class="overflow-hidden">
+            <div class="fw-bold text-truncate text-white small" id="nomeAdmin">Admin</div>
+            <div class="text-muted text-truncate extra-small" style="font-size: 0.75rem;" id="emailAdmin">admin@librastech.com</div>
+          </div>
+        </div>
+        <button id="btnSair" class="btn-logout">
+          <i class="fa-solid fa-right-from-bracket me-1"></i> Sair
+        </button>
+      </div>
+    </aside>
+
+    <!-- Conteúdo Central -->
+    <main class="main-content">
+      <div class="mb-4">
+        <h2 class="fw-bold text-dark">O que você deseja ver hoje?</h2>
+        <p class="text-muted">Acompanhe as métricas de tráfego do site e os dados de assinaturas de usuários em tempo real.</p>
+      </div>
+
+      <!-- Métricas / Gráficos -->
+      <div class="row g-4">
+        <!-- Gráfico 1: Acessos ao site hoje -->
+        <div class="col-lg-7">
+          <div class="card-lt h-100">
+            <div class="card-title-lt">
+              <span><i class="fa-solid fa-chart-line text-primary me-2"></i>Acessos ao site hoje</span>
+              <span class="badge bg-light text-dark font-normal small" id="badgeDataHoje">--/--/----</span>
+            </div>
+            <div class="d-flex align-items-baseline mb-3">
+              <h3 class="fw-bold text-dark mb-0 me-2" id="totalAcessosHoje">0</h3>
+              <span class="text-muted small">acessos totais registrados hoje</span>
+            </div>
+            <div style="position: relative; height:260px;">
+              <canvas id="chartAcessos"></canvas>
+            </div>
+            <div class="mt-2 text-end">
+              <small class="text-muted" id="fonteDadosAcessos"></small>
+            </div>
+          </div>
+        </div>
+
+        <!-- Gráfico 2: Usuários com planos -->
+        <div class="col-lg-5">
+          <div class="card-lt h-100">
+            <div class="card-title-lt">
+              <span><i class="fa-solid fa-pie-chart text-info me-2"></i>Usuários com planos</span>
+              <span class="badge bg-primary-subtle text-primary small" id="percentualComPlano">0%</span>
+            </div>
+            <div style="position: relative; height:220px;" class="d-flex align-items-center justify-content-center">
+              <canvas id="chartUsuariosPlanos"></canvas>
+            </div>
+            <div class="row text-center mt-3 pt-3 border-top">
+              <div class="col-6 border-end">
+                <div class="text-muted extra-small">COM PLANO ATIVO</div>
+                <div class="fw-bold fs-5 text-success" id="qtdComPlano">0</div>
+              </div>
+              <div class="col-6">
+                <div class="text-muted extra-small">SEM PLANO ATIVO</div>
+                <div class="fw-bold fs-5 text-secondary" id="qtdSemPlano">0</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="frmPrincipal.js"></script>
+</body>
+</html>

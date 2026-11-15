@@ -1,0 +1,45 @@
+{
+  "name": "librastech-desktop",
+  "version": "1.0.0",
+  "description": "Painel Administrativo Desktop do LibrasTech",
+  "main": "main/main.js",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --win nsis"
+  },
+  "keywords": [
+    "electron",
+    "librastech",
+    "dashboard",
+    "admin"
+  ],
+  "author": "LibrasTech Development Team",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^16.4.5",
+    "mysql2": "^3.9.2"
+  },
+  "devDependencies": {
+    "electron": "^29.1.0",
+    "electron-builder": "^24.13.3"
+  },
+  "build": {
+    "appId": "com.librastech.desktop",
+    "productName": "LibrasTech Desktop",
+    "directories": {
+      "output": "dist"
+    },
+    "win": {
+      "target": "nsis",
+      "icon": "renderer/css/icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "LibrasTech Desktop"
+    }
+  }
+}
