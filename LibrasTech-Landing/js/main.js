@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const path = window.location.pathname;
     
     // ==========================================
-    // LÓGICA: PÁGINA DE LOGIN
+    //  PÁGINA DE LOGIN
     // ==========================================
     if (path.includes("login.html")) {
         const formLogin = document.getElementById("login");
@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // ==========================================
-    // LÓGICA: PÁGINA DE CADASTRO (2 PARTES)
+    // PÁGINA DE CADASTRO (2 PARTES)
     // ==========================================
     if (path.includes("cadastro.html")) {
         const parte1 = document.getElementById("parte1");

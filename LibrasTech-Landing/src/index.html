@@ -25,9 +25,9 @@
   </div>
 
   <div class="landing-art" aria-hidden="true">
-    <div class="hands-background"></div>
-    <img src="../img/maoAzul.png" class="hand hand-blue" alt="">
-    <img src="../img/maoAmarela.png" class="hand hand-yellow" alt="">
+    <video class="hands-video" autoplay="" loop="" muted="" playsinline="">
+      <source src="../img/fundo.webm" type="video/webm">
+    </video>
   </div>
 </section>
 
@@ -38,9 +38,7 @@
       <img src="../img/logoInteira.png" class="navbar-logo" alt="LibrasTech">
     </a>
 
-    <button class="menu-toggle" type="button"
-      aria-label="Abrir menu" aria-expanded="false"
-      onclick="document.querySelector('.site-nav').classList.toggle('is-open'); this.setAttribute('aria-expanded', this.getAttribute('aria-expanded') !== 'true')">
+    <button class="menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false" onclick="document.querySelector('.site-nav').classList.toggle('is-open'); this.setAttribute('aria-expanded', this.getAttribute('aria-expanded') !== 'true')">
       <i class="bi bi-list"></i>
     </button>
 
@@ -53,7 +51,7 @@
     </nav>
   </header>
 
-  <div class="home-content">
+  <div class="home-content show-animation">
     <div>
       <p class="eyebrow">Conheça o curso</p>
       <h2>LibrasTech</h2>
@@ -71,19 +69,19 @@
   </div>
 
   <div class="feature-grid">
-    <article class="feature-card">
+    <article class="feature-card show-animation">
       <span class="feature-icon"><i class="bi bi-camera-video"></i></span>
       <h3>Correção em tempo real</h3>
       <p>Nosso curso possui sistema de correção na mesma hora em que você executa o movimento.</p>
     </article>
 
-    <article class="feature-card">
+    <article class="feature-card show-animation">
       <span class="feature-icon"><i class="bi bi-lightbulb"></i></span>
       <h3>Tecnologia e aprendizado</h3>
       <p>Unimos tecnologias para facilitar seu aprendizado e tornar a experiência mais prática.</p>
     </article>
 
-    <article class="feature-card">
+    <article class="feature-card show-animation">
       <span class="feature-icon"><i class="bi bi-collection"></i></span>
       <h3>Sua biblioteca</h3>
       <p>Acesse o que você já aprendeu e acompanhe os conteúdos que ainda faltam estudar.</p>
